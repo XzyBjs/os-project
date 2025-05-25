@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "mintest.h": "c",
+        "stdlib.h": "c",
+        "typeinfo": "c",
+        "tcp_utils.h": "c",
+        "log.h": "c",
+        "assert.h": "c",
+        "block.h": "c",
+        "string.h": "c"
+    }
+}

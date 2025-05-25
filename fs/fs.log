@@ -1,0 +1,144 @@
+[INFO] Read block 0
+[INFO] Read block 0
+[INFO] initialize with no user
+[INFO] Read block 17
+[ERROR] iget: inode not allocated
+[INFO] Read block 17
+[INFO] free inode0
+[INFO] Write block 17
+[INFO] ialloc: inode 0 allocated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Read block 17
+[ERROR] iget: inode not allocated
+[INFO] Read block 17
+[INFO] free inode1
+[INFO] Write block 17
+[INFO] ialloc: inode 1 allocated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 1 updated
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] writei off: 0, n: 512, block_to_use: 2
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Allocate block 33, block_free 64478
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Allocate block 34, block_free 64477
+[INFO] finish allocate
+[INFO] Read block 33
+[INFO] Write block 33
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] writei off: 0, n: 512, block_to_use: 2
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Allocate block 35, block_free 64476
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Allocate block 36, block_free 64475
+[INFO] finish allocate
+[INFO] Read block 35
+[INFO] Write block 35
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 1 updated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 1 updated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] cmd_format
+[INFO] Read block 17
+[INFO] Read block 18
+[INFO] readi off: 0, n:512
+[INFO] Read block 33
+[INFO] dir num: 2
+[INFO] Read block 17
+[INFO] Read block 18
+[INFO] readi off: 0, n:512
+[INFO] Read block 33
+[INFO] Read block 17
+[INFO] free inode2
+[INFO] Write block 17
+[INFO] ialloc: inode 2 allocated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 2 updated
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] writei off: 0, n: 512, block_to_use: 2
+[INFO] finish allocate
+[INFO] Read block 33
+[INFO] Write block 33
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] File made: a
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 2 updated
+[INFO] Read block 17
+[INFO] Read block 18
+[INFO] readi off: 0, n:512
+[INFO] Read block 33
+[INFO] dir num: 3
+[ERROR] Missing mode name
+[INFO] Read block 17
+[INFO] Read block 18
+[INFO] readi off: 0, n:512
+[INFO] Read block 33
+[INFO] Read block 17
+[INFO] free inode3
+[INFO] Write block 17
+[INFO] ialloc: inode 3 allocated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 3 updated
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] writei off: 0, n: 512, block_to_use: 2
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Allocate block 37, block_free 64474
+[INFO] Write block 0
+[INFO] Update superblock
+[INFO] Allocate block 38, block_free 64473
+[INFO] finish allocate
+[INFO] Read block 37
+[INFO] Write block 37
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 3 updated
+[INFO] writei off: 0, n: 512, block_to_use: 2
+[INFO] finish allocate
+[INFO] Read block 33
+[INFO] Write block 33
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] Dir made: abs
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 0 updated
+[INFO] Read block 18
+[INFO] Write block 18
+[INFO] iupdate: inode 3 updated
+[INFO] Read block 17
+[INFO] Read block 18
+[INFO] readi off: 0, n:512
+[INFO] Read block 33
+[INFO] dir num: 4
+[INFO] Exit
