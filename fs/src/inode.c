@@ -129,7 +129,7 @@ void iupdate(inode *ip) {
 }
 
 int readi(inode *ip, uchar *dst, uint off, uint n) {
-    Log("readi off: %d, n:%d",off,n);
+    Log("readi %d off: %d, n:%d",ip->inum,off,n);
     if(off==0 && n==0){
         dst[0]='\0';
         return 0;
@@ -450,6 +450,7 @@ void deletei(inode *ip){
     uchar imp_buf[BSIZE];
     read_block(sb.imapstart,imp_buf);
     write_map(imp_buf,0,ip->inum,0);
+    write_block(sb.imapstart,imp_buf);
     iput(ip);
     return;
 }

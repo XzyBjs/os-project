@@ -17,6 +17,7 @@ typedef struct {
     uint data_start;  // Block number of first data block
     uint data_block_free; // Number of available data blocks
     uint inode_free;  // Number of available inodes
+    int format;     // Format status, 0 for unformatted, 1 for formatted
     int ncyl;
     int nsec;
     uint user_num;
@@ -38,11 +39,18 @@ void zero_block(uint bno);
 uint allocate_block();
 void free_block(uint bno);
 
+
+void block_client_init(int port);
 void get_disk_info(int *ncyl, int *nsec);
 void read_block(int blockno, uchar *buf);
 void write_block(int blockno, uchar *buf);
 
 void update_superblock();
+void block_client_destroy();
 
+// void change_static_ncyl_nsec(int ncyl, int nsec);
+
+extern int static_ncyl;
+extern int static_nsec;
 
 #endif

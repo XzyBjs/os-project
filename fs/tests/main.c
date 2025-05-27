@@ -3,7 +3,7 @@
 
 #include "log.h"
 #include "mintest.h"
-
+#include "block.h"
 int mt_tests_run = 0;
 int mt_pass_count = 0;
 int mt_fail_count = 0;
@@ -22,6 +22,7 @@ FILE *log_file;
 
 int main(int argc, char **argv) {
     log_init("fs.log");
+    block_client_init(5555);
     void (*test)() = all_tests;
     if (argc > 1) {
         if (strcmp(argv[1], "block") == 0) {
@@ -33,6 +34,7 @@ int main(int argc, char **argv) {
         }
     }
     mt_main(test);
+    block_client_destroy();
     log_close();
     return mt_fail_count;
 }
