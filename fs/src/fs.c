@@ -49,10 +49,12 @@ void sbinit() {
     uchar buf[BSIZE];
     read_block(0, buf);
     memcpy(&sb, buf, sizeof(sb));
+    Log("sbinit");
 }
 
 int cmd_f(int ncyl, int nsec) {
     sbinit();
+    Log("cmd_f: ncyl=%d, nsec=%d", ncyl, nsec);
     if(sb.magic!=0x6657){
         initialize_superblock_no_user(ncyl,nsec,60);
     }
@@ -93,7 +95,8 @@ int cmd_f(int ncyl, int nsec) {
     root_dir->entries[1].user=0;
     root_dir->entries[1].mode=-1;
     writei(root,(uchar*)root_dir,0,sizeof(directory));
-
+    Log("Root info - inum: %d, type: %d, owner: %d, mode: %d, size: %d, first_addrs:%d", 
+        root->inum, root->type, root->owner, root->mode, root->size, root->addrs[0]);
     directory* home_dir=malloc(sizeof(directory));
 
     home->mode=-1;
@@ -149,6 +152,10 @@ int cmd_f(int ncyl, int nsec) {
     free(root_dir);
     update_superblock();
     Log("cmd_format");
+    Log("Superblock initialized: magic=0x%x, size=%d, bmapstart=%d, bmapend=%d, imapstart=%d, imapend=%d, inode_start=%d, inode_end=%d, data_start=%d, data_block_count=%d, data_block_free=%d, inode_count=%d, inode_free=%d", 
+        sb.magic, sb.size, sb.bmapstart, sb.bmapend, sb.imapstart, sb.imapend,
+        sb.inode_start, sb.inode_end, sb.data_start, sb.data_block_count,
+        sb.data_block_free, sb.inode_count, sb.inode_free);
     return E_SUCCESS;
 }
 
@@ -441,7 +448,10 @@ int cmd_rmdir(char *name) {
     return E_SUCCESS;
 }
 int cmd_ls(entry **entries, int *n) {
+    Log("cmd_ls");
     inode* current_dir = iget(sb.current_dir_inum);
+    Log("inode info: inum=%d, type=%d, owner=%d, mode=%d, size=%d, first_addrs:%d", 
+        current_dir->inum, current_dir->type, current_dir->owner, current_dir->mode, current_dir->size, current_dir->addrs[0]);
     directory* dir=malloc(sizeof(directory));
     readi(current_dir,(uchar*)dir,0,sizeof(directory));
 
@@ -676,7 +686,7 @@ int cmd_d(char *name, uint pos, uint len) {
     dir->entries[target_num].mode=target->mode;
     strcpy(dir->entries[target_num].name,name);
     writei(current_dir,(uchar*)dir,0,sizeof(directory));
-    
+
 
     iupdate(target);
     iput(target);
@@ -690,7 +700,7 @@ int cmd_login(int auid) {
     sbinit();
     Log("sbinit");
     if(sb.magic!=0x6657){
-        initialize_superblock_no_user(10,10,0);
+        initialize_superblock_no_user(1024,63,0);
     }
     bool exist=false;
     for(int i=0;i<sb.user_num;i++){
@@ -702,6 +712,14 @@ int cmd_login(int auid) {
     if(exist==false){
         sb.user_id[sb.user_num]=auid;
         sb.user_num++;
+        if(sb.format==1){
+            cmd_cd("/");
+            cmd_cd("users");
+            char user_name[MAXNAME];
+            int_to_char(auid, user_name);
+            cmd_mkdir(user_name, -1);
+            cmd_cd("..");
+        }
     }
 
     update_superblock();

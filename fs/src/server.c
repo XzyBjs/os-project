@@ -348,7 +348,14 @@ int handle_e(tcp_buffer *wb, char *args, int lenth) {
 }
 
 int handle_login(tcp_buffer *wb, char *args, int lenth) {
+    if(args == NULL || strlen(args) == 0) {
+        char error[] = "Missing user ID";
+        Error("Missing user ID");
+        reply_with_no(wb, error, strlen(error) + 1);
+        return 0;
+    }
     int uid=atoi(strtok(args, " \r\n"));
+    
     if (cmd_login(uid) == E_SUCCESS) {
         reply_with_yes(wb, NULL, 0);
         Log("User %d logged in", uid);
@@ -398,19 +405,22 @@ void cleanup(int id) {
 FILE *log_file;
 
 int main(int argc, char *argv[]) {
-    if(argc < 2) {
-        fprintf(stderr, "Usage: %s <Port>\n", argv[0]);
+    if(argc < 3) {
+        fprintf(stderr, "Usage: %s <Disk System Port> <File System Port>\n", argv[0]);
         exit(EXIT_FAILURE);
     }
-    int port = atoi(argv[1]);
+    int disk_port = atoi(argv[1]);
+    int port = atoi(argv[2]);
 
 
     log_init("fs.log");
-
+    block_client_init(disk_port);
+    Log("File System Server started on port %d", port);
     // get disk info and store in global variables
-    // get_disk_info(&ncyl, &nsec);
-    ncyl=1024;
-    nsec=63;
+    get_disk_info(&ncyl, &nsec);
+    // Log("Disk info: ncyl=%d, nsec=%d", ncyl, nsec);
+    // ncyl=1024;
+    // nsec=63;
 
     sbinit();
     // command
