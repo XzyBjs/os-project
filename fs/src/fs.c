@@ -710,6 +710,10 @@ int cmd_login(int auid) {
         }
     }
     if(exist==false){
+        if(sb.user_num>=5){
+            Error("Too many users: %d",sb.user_num);
+            return E_ERROR;
+        }
         sb.user_id[sb.user_num]=auid;
         sb.user_num++;
         if(sb.format==1){
@@ -724,5 +728,8 @@ int cmd_login(int auid) {
 
     update_superblock();
     Log("cmd_login: %d",auid);
+    return E_SUCCESS;
+}
+int cmd_logout(int auid){
     return E_SUCCESS;
 }

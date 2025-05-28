@@ -1,10 +1,15 @@
-EXES = FS FS_local FC test_fs
+EXES = FS FS_multi FS_local FC test_fs
 
 BUILD_DIR = build
 
 FS_OBJS = src/server.o \
 	src/block.o \
 	src/fs.o \
+	src/inode.o 
+
+FS_multi_OBJS = src/server_multi.o \
+	src/block.o \
+	src/fs_multi.o \
 	src/inode.o 
 
 FS_local_OBJS = src/main.o \

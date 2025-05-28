@@ -39,7 +39,7 @@ void block_client_destroy() {
 void initialize_superblock(int ncyl, int nsec, uint inode_cnt) {
     Log("initialize with users");
     sb.magic=0x6657;
-    sb.format=1;
+    sb.format=0;
     sb.size=ncyl*nsec;
     sb.bmapstart=1;
     sb.bmapend=(sb.size / BPB) + 1;
@@ -113,7 +113,7 @@ void initialize_superblock(int ncyl, int nsec, uint inode_cnt) {
 void initialize_superblock_no_user(int ncyl, int nsec, uint inode_cnt) {
     Log("initialize with no user");
     sb.magic=0x6657;
-    sb.format=1;
+    sb.format=0;
     sb.size=ncyl*nsec;
     sb.bmapstart=1;
     sb.bmapend=(sb.size / BPB) + 1;
