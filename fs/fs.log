@@ -13978,7 +13978,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] Dir made: joglc
+[INFO] Dir made: tsuji
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14037,7 +14037,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 3 updated
-[INFO] Dir made: dciom
+[INFO] Dir made: cflwl
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 3 updated
@@ -14096,7 +14096,7 @@
 [INFO] Read block 19 at cyl 19 sec 0
 [INFO] Write block 19 at cyl 19 sec 0
 [INFO] iupdate: inode 4 updated
-[INFO] Dir made: kdfoi
+[INFO] Dir made: nrzyq
 [INFO] Read block 19 at cyl 19 sec 0
 [INFO] Write block 19 at cyl 19 sec 0
 [INFO] iupdate: inode 4 updated
@@ -14301,7 +14301,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] Dir made: jsezi
+[INFO] Dir made: tsuji
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14328,7 +14328,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] File made: mgifs
+[INFO] File made: cflwl
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14372,7 +14372,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] Dir made: golds
+[INFO] Dir made: nrzyq
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14399,7 +14399,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] File made: oqvrs
+[INFO] File made: izwad
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14443,7 +14443,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] Dir made: xalfs
+[INFO] Dir made: sbjbw
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14470,7 +14470,7 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
-[INFO] File made: qztut
+[INFO] File made: nxhcp
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] Write block 18 at cyl 18 sec 0
 [INFO] iupdate: inode 0 updated
@@ -14481,24 +14481,24 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] readi 0 off: 0, n:512
 [INFO] Read block 33 at cyl 33 sec 0
-[INFO] Dir of same name exist: jsezi
+[INFO] Dir of same name exist: sbjbw
 [INFO] Read block 17 at cyl 17 sec 0
-[INFO] Read block 18 at cyl 18 sec 0
-[INFO] readi 3 off: 0, n:512
-[INFO] Read block 39 at cyl 39 sec 0
+[INFO] Read block 19 at cyl 19 sec 0
+[INFO] readi 7 off: 0, n:512
+[INFO] Read block 43 at cyl 43 sec 0
 [INFO] Read block 1 at cyl 1 sec 0
 [INFO] Write block 1 at cyl 1 sec 0
 [INFO] Write block 0 at cyl 0 sec 0
 [INFO] Update superblock
-[INFO] Free block 40
-[INFO] Read block 18 at cyl 18 sec 0
-[INFO] Write block 18 at cyl 18 sec 0
-[INFO] iupdate: inode 3 updated
+[INFO] Free block 44
+[INFO] Read block 19 at cyl 19 sec 0
+[INFO] Write block 19 at cyl 19 sec 0
+[INFO] iupdate: inode 7 updated
 [INFO] Read block 1 at cyl 1 sec 0
 [INFO] Write block 1 at cyl 1 sec 0
 [INFO] Write block 0 at cyl 0 sec 0
 [INFO] Update superblock
-[INFO] Free block 39
+[INFO] Free block 43
 [INFO] Read block 17 at cyl 17 sec 0
 [INFO] Write block 17 at cyl 17 sec 0
 [INFO] writei off: 0, n: 512, block_to_use: 2
@@ -14522,9 +14522,9 @@
 [INFO] Read block 18 at cyl 18 sec 0
 [INFO] readi 0 off: 0, n:512
 [INFO] Read block 33 at cyl 33 sec 0
-[INFO] File of same name exist: qztut
+[INFO] File of same name exist: izwad
 [INFO] Read block 17 at cyl 17 sec 0
-[INFO] Read block 20 at cyl 20 sec 0
+[INFO] Read block 19 at cyl 19 sec 0
 [INFO] Read block 17 at cyl 17 sec 0
 [INFO] Write block 17 at cyl 17 sec 0
 [INFO] writei off: 0, n: 512, block_to_use: 2
