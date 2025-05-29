@@ -489,11 +489,24 @@ int cmd_cd_i(int auid, char *name) {
             return E_PERMISSION_DENIED;
         }
         //update final_name by adding the token
-        if(strlen(final_name)>1){
-            strcat(final_name,"/");
+        //condiser the case of ..
+        if(strcmp(token,"..")==0){
+            //remove the last part of final_name
+            char* last_slash=strrchr(final_name, '/');
+            if(last_slash != NULL) {
+                *last_slash = '\0'; // remove the last part
+            }
+            if(strlen(final_name)==0){
+                strcpy(final_name,"/");
+            }
         }
-        strcat(final_name, token);
-
+        else if(strlen(final_name)>1){
+            strcat(final_name,"/");
+            strcat(final_name, token);
+        }
+        else{
+            strcat(final_name, token); // if final_name is empty, just copy the token
+        }
         token=strtok(NULL,"/");
     }
     
@@ -579,6 +592,27 @@ int cmd_rmdir_i(int auid, char *name) {
         free(dir);
         return E_PERMISSION_DENIED;
     }
+
+    //check if other users are in this dir
+   
+    for(int i=0;i<5;i++){
+        if(users.valid[i] && users.logstatus[i]==1 && users.current_dir_inum[i]==target->inum){
+            Error("User %d is in this dir: %s",users.user_id[i],name);
+            iput(current_dir);
+            free(dir);
+            free(target_dir);
+            return E_PERMISSION_DENIED;
+        }
+        //move the user out of this dir if they logged out
+        if(users.valid[i] && users.logstatus[i]==0 && users.current_dir_inum[i]==target->inum ){
+            Log("User %d is moved out of dir: %s",users.user_id[i],name);
+            change_user_inum(users.user_id[i], current_dir->inum);
+            char current_dir_name[BSIZE];
+            get_user_dname(auid, current_dir_name);
+            change_user_dname(users.user_id[i], current_dir_name);
+        }
+    }
+
 
     //delete the dir
     deletei(target);
@@ -966,7 +1000,7 @@ int cmd_login(int auid) {
     } else {
         if(users.logstatus[addr]==1){
             Error("User %d already logged in", auid);
-            return E_ERROR;
+            return E_PERMISSION_DENIED;
         }
         users.logstatus[addr]=1; //set logged in
         Log("User %d logged in", auid);
@@ -1012,6 +1046,40 @@ int cmd_logout(int auid) {
     }
     users.logstatus[addr]=0; //set logged out
     Log("User %d logged out", auid);
+    return E_SUCCESS;
+}
+
+int cmd_pwd_i(int auid, char *name, int *len){
+    if(sb.magic!=0x6657 || sb.format==0){
+        return E_NOT_FORMATTED;
+    }
+    if(check_user_addr(auid)==-1){
+        Error("User not logged in");
+        return E_NOT_LOGGED_IN;
+    }
+    if(auid<0){
+        Error("Not logged in");
+        return E_NOT_LOGGED_IN;
+    }
+    //get current dir of user
+    uint current_dir_inum;
+    get_user_inum(auid, &current_dir_inum);
+    inode* current_dir=iget(current_dir_inum);
+    if(current_dir==NULL){
+        Error("Wrong current dir: %d",current_dir_inum);
+        return E_ERROR;
+    }
+
+    //get user current dir name
+    char tmp[BSIZE];
+    get_user_dname(auid, tmp);
+    
+    strcpy(name, tmp);
+
+    *len = strlen(name);
+
+    iput(current_dir);
+    Log("cmd_pwd_i: %s", name);
     return E_SUCCESS;
 }
 
@@ -1084,4 +1152,53 @@ void change_user_dname(int auid, const char *name){
     } else {
         Error("User %d not found", auid);
     }
+}
+
+void update_client_id(int auid, int client_id) {
+    int index = check_user_addr(auid);
+    if(index != -1) {
+        users.client_id[index] = client_id;
+        Log("User %d client ID updated to %d", auid, client_id);
+    } else {
+        Error("User %d not found", auid);
+    }
+}
+
+void client_logout(int client_id) {
+    for(int i=0;i<5;i++){
+        if(users.valid[i] && users.client_id[i]==client_id){
+            users.valid[i]=0; // mark user as logged out
+            Log("Client %d logged out user %d", client_id, users.user_id[i]);
+        }
+    }
+}
+
+int get_client_id(int auid) {
+    int index = check_user_addr(auid);
+    if(index != -1) {
+        return users.client_id[index];
+    } else {
+        Error("User %d not found", auid);
+        return -1; // user not found
+    }
+}
+
+int get_uid(int client_id) {
+    for(int i=0;i<5;i++){
+        if(users.valid[i] && users.client_id[i]==client_id && users.logstatus[i]==1){
+            return users.user_id[i];
+        }
+    }
+
+    return -1; 
+}
+
+int show_vector() {
+    Log("Users vector:");
+    for(int i=0;i<5;i++){
+        Log("Valid: %d, Index: %d, User ID: %d, Log Status: %d, Current Dir Inum: %d, Current Dir Name: %s, Client ID: %d", users.valid[i],
+            i, users.user_id[i], users.logstatus[i], users.current_dir_inum[i], users.current_dir_name[i], users.client_id[i]);
+
+    }
+    return E_SUCCESS;
 }
