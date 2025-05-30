@@ -2,20 +2,20 @@ EXES = FS FS_multi FS_local FC test_fs FS_ram
 
 BUILD_DIR = build
 
-FS_OBJS = src/server.o \
-	src/block.o \
-	src/fs.o \
-	src/inode.o 
+FS_OBJS = src/basic/server.o \
+	src/basic/block.o \
+	src/basic/fs.o \
+	src/basic/inode.o 
 
 FS_multi_OBJS = src/multi/server_multi.o \
-	src/block.o \
+	src/basic/block.o \
 	src/multi/fs_multi.o \
-	src/inode.o 
+	src/basic/inode.o 
 
-FS_local_OBJS = src/main.o \
-	src/block.o \
-	src/fs.o \
-	src/inode.o
+FS_local_OBJS = src/basic/main.o \
+	src/basic/block.o \
+	src/basic/fs.o \
+	src/basic/inode.o
 
 FS_ram_OBJS = src/ram/server_ram.o \
 	src/ram/block_ram.o \
@@ -25,9 +25,9 @@ FS_ram_OBJS = src/ram/server_ram.o \
 FC_OBJS = src/client.o
 
 test_fs_OBJS = tests/main.o \
-	src/block.o \
-	src/fs.o \
-	src/inode.o \
+	src/basic/block.o \
+	src/basic/fs.o \
+	src/basic/inode.o \
 	tests/test_block.o \
 	tests/test_fs.o \
 	tests/test_inode.o
