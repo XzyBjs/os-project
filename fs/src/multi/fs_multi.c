@@ -765,10 +765,10 @@ int cmd_w_i(int auid, char *name, uint len, const char *data) {
         Error("Wrong current dir: %d",current_dir_inum);
         return E_ERROR;
     }
-    if(strlen(data)>len){
-        Error("Wrong len: %d",len);
-        return E_ERROR;
-    }
+    // if(strlen(data)>len){
+    //     Error("Wrong len: %d",len);
+    //     return E_ERROR;
+    // }
     directory* dir=malloc(sizeof(directory));
     readi(current_dir,(uchar*)dir,0,sizeof(directory));
 

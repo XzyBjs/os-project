@@ -22,7 +22,7 @@ FS_ram_OBJS = src/ram/server_ram.o \
 	src/ram/fs_ram.o \
 	src/ram/inode_ram.o 
 
-FC_OBJS = src/client.o
+FC_OBJS = src/basic/client.o
 
 test_fs_OBJS = tests/main.o \
 	src/basic/block.o \
