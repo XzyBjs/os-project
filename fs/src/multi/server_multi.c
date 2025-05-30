@@ -469,21 +469,27 @@ int handle_w(tcp_buffer *wb, char *args, int lenth, int id) {
     char *name;
     uint len;
     char *data;
-    name = strtok(args, " \r\n");
+    char *saveptr;
+    int offset = 0;
+
+    name = __strtok_r(args, " \r\n", &saveptr);
+    offset += strlen(name) + 1; 
     if (name == NULL) {
         char error[] = "Missing file name";
         Error("Missing file name");
         reply_with_no(wb, error, strlen(error) + 1);
         return 0;
     }
-    char *len_str = strtok(NULL, " \r\n");
+    char *len_str = __strtok_r(NULL, " \r\n", &saveptr);
+    offset += strlen(len_str) + 1;
     if (len_str == NULL) {
         char error[] = "Missing length";
         Error("Missing length");
         reply_with_no(wb, error, strlen(error) + 1);
         return 0;
     }
-    data = strtok(NULL, "\r\n");
+    data=args+offset;
+
     if (data == NULL) {
         char error[] = "Missing data";
         Error("Missing data");
