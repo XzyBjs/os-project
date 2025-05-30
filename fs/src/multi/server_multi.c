@@ -483,7 +483,7 @@ int handle_w(tcp_buffer *wb, char *args, int lenth, int id) {
         reply_with_no(wb, error, strlen(error) + 1);
         return 0;
     }
-    data = strtok(NULL, " \r\n");
+    data = strtok(NULL, "\r\n");
     if (data == NULL) {
         char error[] = "Missing data";
         Error("Missing data");
@@ -526,6 +526,7 @@ int handle_w(tcp_buffer *wb, char *args, int lenth, int id) {
     }
     return 0;
 }
+
 
 int handle_i(tcp_buffer *wb, char *args, int lenth, int id) {
     sem_wait(&sem_vector);

@@ -1,4 +1,4 @@
-EXES = FS FS_multi FS_local FC test_fs
+EXES = FS FS_multi FS_local FC test_fs FS_ram
 
 BUILD_DIR = build
 
@@ -7,15 +7,20 @@ FS_OBJS = src/server.o \
 	src/fs.o \
 	src/inode.o 
 
-FS_multi_OBJS = src/server_multi.o \
+FS_multi_OBJS = src/multi/server_multi.o \
 	src/block.o \
-	src/fs_multi.o \
+	src/multi/fs_multi.o \
 	src/inode.o 
 
 FS_local_OBJS = src/main.o \
 	src/block.o \
 	src/fs.o \
 	src/inode.o
+
+FS_ram_OBJS = src/ram/server_ram.o \
+	src/ram/block_ram.o \
+	src/ram/fs_ram.o \
+	src/ram/inode_ram.o 
 
 FC_OBJS = src/client.o
 
