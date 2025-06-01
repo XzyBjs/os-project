@@ -360,32 +360,3 @@ void print_bits(uchar *array, int num_bytes) {
         printf("\n");
     }
 }
-
-void debug_print_bytes(char *data, int n) {
-    if (data == NULL) {
-        Log("Data is NULL!\n");
-        return;
-    }
-
-    // 打印 n 的值（如果 n 大于实际数据长度，只打印到数据末尾）
-    Log("Printing first %d bytes of data:\n", n);
-
-    // 计算实际要打印的字节数（不能超过数据长度）
-    int bytes_to_print = n;
-
-    // 逐字节打印数据
-    for (int i = 0; i < bytes_to_print; i++) {
-        // 如果是可打印字符，直接打印字符本身
-        if (isprint((unsigned char)data[i])) {
-            Log("%c ", data[i]);
-        } else {
-            // 否则，打印十六进制值并标注
-            Log("[0x%02x] ", (unsigned char)data[i]);
-        }
-
-    }
-    // 如果最后不是刚好 16 个字节换行，确保最后有一个换行
-    if (bytes_to_print % 16 != 0) {
-        Log("\n");
-    }
-}
