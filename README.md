@@ -6,7 +6,7 @@ This project includes the source code for disk and file system required by Proje
 The project is available on github: https://github.com/XzyBjs/os-project.git
 
 ## Directory structure
-
+```
 Prj3_523031910672/
 ├── README.md			# Project documentation
 ├── Makefile				# Compilation file
@@ -26,7 +26,7 @@ Prj3_523031910672/
 ├── include/
 ├── lib/                # Library files for tcp and thpool
 └── report.pdf			# Final report
-
+```
 ## Compilation
 
 Open the terminal in the file path and type 'make' to complete the compilation. Use 'make clean' to clear object files.
